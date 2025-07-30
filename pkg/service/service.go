@@ -1,3 +1,4 @@
+
 package service
 
 import (
@@ -10,6 +11,7 @@ type Authorization interface {
 	GenerateToken(username, password string) (string, error)
 	ParseToken(token string) (int, error)
 }
+//go:generate mockery --name=TodoList --output=pkg/service/mocks --case=underscore
 type TodoList interface {
 	Create(userId int, list ToDoApp.TodoList) (int, error)
 	GetAll(userId int) ([]ToDoApp.TodoList, error)

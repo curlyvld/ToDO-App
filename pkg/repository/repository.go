@@ -1,3 +1,4 @@
+//go:generate mockery --name=TodoList --output=pkg/repository/mocks --case=underscore
 package repository
 
 import (
