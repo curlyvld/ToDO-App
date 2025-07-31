@@ -6,6 +6,18 @@ import (
 	"net/http"
 )
 
+// @Summary      signUp
+// @Description  create acc
+// @Tags         auth
+// @Accept       json
+// @Produce      json
+// @Param       input body ToDoApp.User true "acc info"
+// @Success      200  {integer}   integer 1
+// @Failure      400  {object}  errorResponse
+// @Failure      404  {object} errorResponse
+// @Failure      500  {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router       /auth/sign-up [post]
 func (h *Handler) signUp(c *gin.Context) {
 	var input ToDoApp.User
 	if err := c.BindJSON(&input); err != nil {
@@ -28,6 +40,19 @@ type signInInput struct {
 	Password string `json:"password" binding:"required"`
 }
 
+// @Summary      signIn
+// @Description  login
+// @Tags         auth
+// @ID login
+// @Accept       json
+// @Produce      json
+// @Param       input body signInInput true "login info"
+// @Success      200  {string}   string "token"
+// @Failure      400  {object}  errorResponse
+// @Failure      404  {object} errorResponse
+// @Failure      500  {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router       /auth/sign-in [post]
 func (h *Handler) signIn(c *gin.Context) {
 	var input signInInput
 	if err := c.BindJSON(&input); err != nil {
